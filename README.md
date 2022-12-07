@@ -39,3 +39,50 @@ keeping things simple.
 
 - Device belongs to a User
 - User can have many devices
+
+## Demo / How it works
+
+This is a simple "employee" dashboard with a homepage, a profile page, and a "super secret" restricted page.
+
+Login screen:
+
+![Screen Shot 2022-12-06 at 10 07 24 PM](https://user-images.githubusercontent.com/989784/206085896-20a1ed60-2a2d-4114-ba72-76c454cfd370.png)
+
+Upon successful login, users are redirected to the dashboard index:
+
+<img width="1552" alt="Screen Shot 2022-12-06 at 2 45 59 PM" src="https://user-images.githubusercontent.com/989784/206085817-7207970d-6e07-4a52-941f-ed8f816430fb.png">
+
+Users can see their profile and registered devices:
+
+<img width="1552" alt="Screen Shot 2022-12-06 at 2 46 07 PM" src="https://user-images.githubusercontent.com/989784/206085830-097af397-9b9e-4b01-a824-81e2045d7846.png">
+
+The "super secret" page is only accessible to registered devices for the User:
+
+Regitered device:
+<img width="1552" alt="Screen Shot 2022-12-06 at 2 46 20 PM" src="https://user-images.githubusercontent.com/989784/206086053-0cea070d-77b7-40ef-97a9-cbc7cd515aeb.png">
+
+Unregistered device (mobile):
+
+![Screenshot_20221206-215609](https://user-images.githubusercontent.com/989784/206086247-b3e3a73c-fccd-4815-8cbc-68c118d5ffd9.png)
+
+Relevant code:
+
+```ruby
+# user.rb
+
+def check_device_policy(client)
+  devices.any? { |device| device.approved?(client) }
+end
+
+# device.rb
+
+def approved?(client)
+  return true if os_name.include?(client.os_name) && kind == client.device_type
+  return false
+end
+```
+
+
+
+
+
