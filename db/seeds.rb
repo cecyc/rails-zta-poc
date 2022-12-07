@@ -11,7 +11,8 @@
 
 Device.create(
   name: "Tom Nook's laptop",
-  kind: "Macbook",
+  os_name: "Mac",
+  kind: "desktop",
   preferred_browser: "Chrome",
   user_id: @user.id
 )

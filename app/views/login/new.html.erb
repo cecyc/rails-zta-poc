@@ -1,0 +1,11 @@
+<h2>Log In</h2>
+
+<%= form_with url: "/login", method: :post do |form| %>
+
+  <%= form.label :email %>
+  <%= form.text_field :email, placeholder: "steve@apple.com" %>
+  <%= form.label :password %>
+  <%= form.password_field :password, placeholder: "password" %>
+  <br>
+  <%= form.submit "Log me in, Scotty" %>
+<% end %>
